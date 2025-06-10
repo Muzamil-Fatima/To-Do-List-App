@@ -6,7 +6,8 @@ A responsive and user-friendly **To-Do List Web App** built using **HTML**, **CS
 
 ## 📸 Preview
 
-![To-Do List Screenshot](./image Preview.PNG) <!-- Replace with your own image path -->
+![To-Do List Screenshot](preview.png)
+
 
 ---
 
