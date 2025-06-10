@@ -6,7 +6,7 @@ A responsive and user-friendly **To-Do List Web App** built using **HTML**, **CS
 
 ## 📸 Preview
 
-![To-Do List Screenshot](TO-Do-LISTAPP/preview.PNG)
+![To-Do List Screenshot](preview.PNG)
 
 
 ---
@@ -75,9 +75,3 @@ If you're a beginner exploring this code, you'll learn how to:
 - Style with gradients and icon backgrounds
 - Use `::before` pseudo-elements and embedded SVGs
 - Structure components with clean HTML/CSS/JS separation
-
----
-
-## 🔗 Live Demo
-
-➡️ [View Live App](https://your-deployment-link.com) <!-- Replace with actual link -->
