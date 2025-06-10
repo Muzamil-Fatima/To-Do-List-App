@@ -1,36 +1,52 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
-function addTask(){
- if(inputBox. value === ''){
-    alert("You must write something");
- }
- else{
-    let li = document.createElement("li");
-    li.innerHTML = inputBox.value;
-    listContainer.appendChild(li);
-    let span = document.createElement("span");
-    span.innerHTML = "\u00d7"
-    li.appendChild(span);
- }
- inputBox.value = "";
- saveData();
+function addTask() {
+    if (inputBox.value === '') {
+        alert("You must write something");
+    } else {
+        let li = document.createElement("li");
+        li.innerHTML = inputBox.value;
+
+        let span = document.createElement("span");
+        span.innerHTML = "\u00d7";
+        li.appendChild(span);
+
+        listContainer.appendChild(li);
+    }
+    inputBox.value = "";
+    sortTasks(); 
+    saveData();
 }
 
-listContainer.addEventListener("click", function(e){
-   if(e.target.tagName === "LI")
-   {
-      e.target.classList.toggle("checked");
-   }
-   else if(e.target.tagName === "SPAN"){
-      e.target.parentElement.remove();
-   }
-}, false);
+listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "LI") {
+        e.target.classList.toggle("checked");
+        sortTasks(); 
+        saveData();
+    } else if (e.target.tagName === "SPAN") {
+        e.target.parentElement.remove();
+        saveData();
+    }
+});
 
-function saveData(){
-   localStorage.setItem("data", listContainer.innerHTML);
+function sortTasks() {
+    const tasks = Array.from(listContainer.children);
+    const unchecked = tasks.filter(task => !task.classList.contains("checked"));
+    const checked = tasks.filter(task => task.classList.contains("checked"));
+
+    listContainer.innerHTML = '';
+    unchecked.forEach(task => listContainer.appendChild(task));
+    checked.forEach(task => listContainer.appendChild(task));
 }
-function showTask(){
-   listContainer.innerHTML =localStorage.getItem("data")
+
+function saveData() {
+    localStorage.setItem("data", listContainer.innerHTML);
 }
+
+function showTask() {
+    listContainer.innerHTML = localStorage.getItem("data");
+    sortTasks(); 
+}
+
 showTask();
